@@ -94,21 +94,14 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-i", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[] = { "alacritty", NULL };
 
-static const char *mpdmenu_library[]  = { "mpdmenu", "-l", "::", "-i", "-l", "20", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *mpdmenu_playlist[] = { "mpdmenu", "-p", "::", "-i", "-l", "20", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *btmenu_connect[]  = { "btmenu", "-c", "::", "-i", "-l", "20", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *btmenu_disconnect[] = { "btmenu", "-d", "::", "-i", "-l", "20", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *clipmenu[]         = { "clipmenu", "-i", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *passmenu[]         = { "passmenu-wrap", "-i", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-
 static Key keys[] = {
-	TK(                    XK_i,            0               ),
-	TK(                    XK_o,            1               ),
-	TK(                    XK_p,            2               ),
-	TK(                    XK_k,            3               ),
-	TK(                    XK_l,            4               ),
-	TK(                    XK_semicolon,    5               ),
-	TK(                    XK_apostrophe,   6               ),
+	TK(                    XK_1,            0               ),
+	TK(                    XK_2,            1               ),
+	TK(                    XK_3,            2               ),
+	TK(                    XK_4,            3               ),
+	TK(                    XK_5,            4               ),
+	TK(                    XK_6,    		5               ),
+	TK(                    XK_7,   			6               ),
 	RK(MODKEY,             XK_comma,        focusstack      ),
 	RK(MODKEY|ControlMask, XK_comma,        movestack       ),
 	RK(MODKEY,             XK_period,       focusmon        ),
@@ -121,11 +114,7 @@ static Key keys[] = {
 	AM(XK_c, forest),
 
  	{ KeyPress,   MODKEY, 			  XK_p, 				   spawn, 		   {.v = roficmd } },
-	{ KeyPress,   MODKEY,             XK_1,                    spawn,          {.v = dmenucmd } },
-	{ KeyPress,   MODKEY,             XK_2,                    spawn,          {.v = passmenu } },
-	{ KeyPress,   MODKEY,             XK_3,                    spawn,          {.v = clipmenu } },
-	{ KeyPress,   MODKEY,             XK_4,                    spawn,          {.v = btmenu_connect } },
-	{ KeyPress,   MODKEY|ControlMask, XK_4,                    spawn,          {.v = btmenu_disconnect } },
+	{ KeyPress,   MODKEY,             XK_d,                    spawn,          {.v = dmenucmd } },
 	{ KeyPress,   MODKEY,             XK_Return,               spawn,          {.v = termcmd } },
 	{ KeyPress,   MODKEY|ControlMask, XK_t,                    setlayout,      {.v = &layouts[0] } },
 	{ KeyPress,   MODKEY|ControlMask, XK_b,                    setlayout,      {.v = &layouts[2] } },
@@ -133,10 +122,6 @@ static Key keys[] = {
 	{ KeyPress,   MODKEY|ControlMask, XK_9,                    setmfact,       {.f = -0.05} },
 	{ KeyPress,   MODKEY|ControlMask, XK_0,                    setmfact,       {.f = +0.05} },
 	{ KeyPress,   MODKEY|ControlMask, XK_r,                    resetlayout,    {0} },
-	{ KeyPress,   MODKEY,             XK_backslash,            spawn,          ESHCMD("browser") },
-	{ KeyPress,   MODKEY|ControlMask, XK_backslash,            spawn,          ESHCMD("browser --incognito") },
-	{ KeyPress,   MODKEY,             XK_slash,                spawn,          {.v = mpdmenu_library } },
-	{ KeyPress,   MODKEY|ControlMask, XK_slash,                spawn,          {.v = mpdmenu_playlist } },
 	{ KeyPress,   MODKEY,             XK_a,                    spawn,          ESHCMD("lock-sleep") },
 	{ KeyPress,   MODKEY,             XK_Prior,                spawn,          ESHCMD("pulseaudio-ctl-xob up") },
 	{ KeyPress,   False,              XF86XK_AudioRaiseVolume, spawn,          ESHCMD("pulseaudio-ctl-xob up") },
@@ -156,12 +141,7 @@ static Key keys[] = {
 	{ KeyRelease, MODKEY,             XK_F10,                  spawn,          ESHCMD("screenshot --all") },
 	{ KeyRelease, False,              XK_F10,                  spawn,          ESHCMD("screenshot --select") },
 	{ KeyPress,   MODKEY,             XK_Delete,               spawn,          ESHCMD("lockphyslock") },
-	{ KeyPress,   MODKEY,             XK_t,                    spawn,          ESHCMD("trello-popup") },
-	{ KeyPress,   MODKEY,             XK_d,                    spawn,          ESHCMD("notify-send \"$(world-tz)\"") },
-	{ KeyPress,   MODKEY,             XK_f,                    spawn,          ESHCMD("notify-send \"$(bats)\"") },
-	{ KeyPress,   MODKEY,             XK_s,                    spawn,          ESHCMD("xinput-toggle -r yubikey -n -e -t 10") },
-	{ KeyPress,   MODKEY,             XK_q,                    spawn,          ESHCMD("kill-idle-shells") },
-	{ KeyPress,   MODKEY,             XK_r,                    spawn,          ESHCMD("nota-todo-reminder") },
+	{ KeyPress,   MODKEY,             XK_x,                    spawn,          ESHCMD("xinput-toggle -r yubikey -n -e -t 10") },
 	{ KeyPress,   MODKEY,             XK_Tab,                  zoom,           {0} },
 	{ KeyPress,   MODKEY,             XK_BackSpace,            killclient,     {0} },
 	{ KeyPress,   MODKEY|ShiftMask,   XK_BackSpace,            killunsel,      {0} },
