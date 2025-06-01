@@ -5,10 +5,10 @@
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 0;        /* 0 means no bar */
+static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Terminus:size=8" };
-static const char dmenufont[]       = "Terminus:size=8";
+static const char *fonts[]          = { "JetBrainsMono:size=12" };
+static const char dmenufont[]       = "JetBrainsMono:size=12";
 static const char normbordercolor[] = "#073642";
 static const char normbgcolor[]     = "#002b36";
 static const char normfgcolor[]     = "#839496";
@@ -70,7 +70,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod4Mask
+#define MODKEY Mod1Mask /* change to ALT key */
 #define TK(KEY,TAG) \
 	{ KeyPress, MODKEY,                         KEY,  view,        {.ui = 1 << TAG} }, \
 	{ KeyPress, MODKEY|ShiftMask,               KEY,  toggleview,  {.ui = 1 << TAG} }, \
@@ -89,8 +89,10 @@ static const Layout layouts[] = {
 #define ESHCMD(cmd) SHCMD("exec " cmd)
 
 /* commands */
+static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-i", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *termcmd[] = { "alacritty", NULL };
 
 static const char *mpdmenu_library[]  = { "mpdmenu", "-l", "::", "-i", "-l", "20", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *mpdmenu_playlist[] = { "mpdmenu", "-p", "::", "-i", "-l", "20", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
@@ -118,13 +120,13 @@ static Key keys[] = {
 	AM(XK_n, rain),
 	AM(XK_c, forest),
 
+ 	{ KeyPress,   MODKEY, 			  XK_p, 				   spawn, 		   {.v = roficmd } },
 	{ KeyPress,   MODKEY,             XK_1,                    spawn,          {.v = dmenucmd } },
 	{ KeyPress,   MODKEY,             XK_2,                    spawn,          {.v = passmenu } },
 	{ KeyPress,   MODKEY,             XK_3,                    spawn,          {.v = clipmenu } },
 	{ KeyPress,   MODKEY,             XK_4,                    spawn,          {.v = btmenu_connect } },
 	{ KeyPress,   MODKEY|ControlMask, XK_4,                    spawn,          {.v = btmenu_disconnect } },
-	{ KeyPress,   MODKEY,             XK_Return,               spawn,          ESHCMD("st -t Terminal") },
-	{ KeyPress,   MODKEY|ShiftMask,   XK_Return,               spawn,          ESHCMD("st -t Scratch -g 160x40") },
+	{ KeyPress,   MODKEY,             XK_Return,               spawn,          {.v = termcmd } },
 	{ KeyPress,   MODKEY|ControlMask, XK_t,                    setlayout,      {.v = &layouts[0] } },
 	{ KeyPress,   MODKEY|ControlMask, XK_b,                    setlayout,      {.v = &layouts[2] } },
 	{ KeyPress,   MODKEY|ControlMask, XK_g,                    setlayout,      {.v = &layouts[3] } },
