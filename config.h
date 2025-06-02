@@ -5,6 +5,8 @@
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx   	= 6;        /* gaps between windows */
+static const unsigned int barpadx 	= 10; 		/* horizontal padding for status bar */
+static const unsigned int barpady 	= 10; 		/* vertical padding for status bar */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -13,12 +15,12 @@ static const char dmenufont[]       = "JetBrainsMono:size=11";
 
 /* color scheme for inactive windows */
 static const char normbordercolor[] = "#2e3440";
-static const char normbgcolor[]     = "#2e3440"; /* bar background color for inactive tags */
-static const char normfgcolor[]     = "#eceff4"; /* bar font color */
+static const char normbgcolor[]     = "#2e3440"; /* status bar background color for inactive tags */
+static const char normfgcolor[]     = "#eceff4"; /* status bar font color */
 
 /* color scheme for active windows */
 static const char selbordercolor[]  = "#d8dee9";
-static const char selbgcolor[]      = "#3b4252"; /* bar background color */
+static const char selbgcolor[]      = "#3b4252"; /* status bar background color */
 static const char selfgcolor[]      = "#eceff4"; /* bar font color for active tag */
 
 static const char *colors[][3]      = {
