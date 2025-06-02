@@ -3,19 +3,23 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx   	= 6;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "JetBrainsMono:size=12" };
-static const char dmenufont[]       = "JetBrainsMono:size=12";
-static const char normbordercolor[] = "#073642";
-static const char normbgcolor[]     = "#002b36";
-static const char normfgcolor[]     = "#839496";
-static const char selbordercolor[]  = "#93a1a1";
-static const char selbgcolor[]      = "#839496";
-static const char selfgcolor[]      = "#002b36";
+static const char *fonts[]          = { "JetBrainsMono:size=11" };
+static const char dmenufont[]       = "JetBrainsMono:size=11";
+
+/* color scheme for inactive windows */
+static const char normbordercolor[] = "#2e3440";
+static const char normbgcolor[]     = "#2e3440"; /* bar background color for inactive tags */
+static const char normfgcolor[]     = "#eceff4"; /* bar font color */
+
+/* color scheme for active windows */
+static const char selbordercolor[]  = "#d8dee9";
+static const char selbgcolor[]      = "#3b4252"; /* bar background color */
+static const char selfgcolor[]      = "#eceff4"; /* bar font color for active tag */
 
 static const char *colors[][3]      = {
 	/*               fg           bg           border   */
