@@ -128,6 +128,7 @@ static Key keys[] = {
 	{ KeyPress,   MODKEY|ControlMask, XK_g,                    setlayout,      {.v = &layouts[3] } },
 	{ KeyPress,   MODKEY|ShiftMask,   XK_j, 				   movestack, 	   {.i = +1}},
 	{ KeyPress,   MODKEY|ShiftMask,   XK_k, 				   movestack, 	   {.i = -1}},
+	{ KeyPress,   MODKEY|ShiftMask,   XK_f, 				   fullscreen, 	   {0} },
 	{ KeyPress,   MODKEY|ControlMask, XK_r,                    resetlayout,    {0} },
 	{ KeyPress,   MODKEY,             XK_a,                    spawn,          ESHCMD("lock-sleep") },
 	{ KeyPress,   MODKEY,             XK_Prior,                spawn,          ESHCMD("pulseaudio-ctl-xob up") },
